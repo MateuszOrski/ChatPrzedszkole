@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: chat-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: weechat_user
+      POSTGRES_PASSWORD: weechat_password
+      POSTGRES_DB: weechat_db
+    ports:
+      - "54321:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
